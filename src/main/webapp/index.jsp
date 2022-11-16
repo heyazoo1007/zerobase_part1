@@ -12,13 +12,29 @@
             border:solid 1px #000;
         }
     </style>
+    <script>
+        $(function () {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (pos) {
+                    $('#latitude').html(pos.coords.latitude);
+                    $('#longitude').html(pos.coords.longitude);
+                });
+            } else {
+                alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
+            }
+        });
+    </script>
 </head>
 <body>
     <h1>와이파이 정보 구하기</h1>
-    </tr><a href="index.jsp">홈</a> | <a href="list.html">위치 히스토리 목록</a> | <a href="save.jsp">Open API 와이파이 정보 가져오기</a>
+    </tr><a href="index.jsp">홈</a> |
+    <a href="list.html">위치 히스토리 목록</a> |
+    <a href="save.jsp">Open API 와이파이 정보 가져오기</a>
     <p></p>
-    LAT : <input type="text" name="LAT" size="20"> ,
-    LNT : <input type="text" name="LNT" size="20">
+
+    LAT : <span id="latitude"></span> ,
+    LNT : <span id="longitude"></span>
+    <button>내 위치 가져오기</button>
     <p></p>
     <table>
         <thead>
