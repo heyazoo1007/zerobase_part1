@@ -1,8 +1,10 @@
 package com.example.zerobase_part1.service;
 
+import com.example.zerobase_part1.web.dto.HistoryDto;
 import com.example.zerobase_part1.web.dto.PublicWifiDto;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 
 public class WifiService {
 
@@ -82,6 +84,70 @@ public class WifiService {
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    public void saveXY(HistoryDto historyDto) {
+        String url = "jdbc:mariadb://localhost:3306/testdb1";
+        String dbUserId = "testuser3";
+        String dbPassword = "zerobase";
+
+
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+
+        try {
+            connection = DriverManager.getConnection(url, dbUserId, dbPassword);
+
+            String sql = "insert into history(x, y, created_time) " +
+                    "values (?, ?, ?); ";
+
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setFloat(1, historyDto.getX());
+            preparedStatement.setFloat(2, historyDto.getY());
+            preparedStatement.setString(3, String.valueOf(historyDto.getCreatedTime()));
+
+            int affected = preparedStatement.executeUpdate();
+
+            if (affected > 0) {
+                System.out.println("저장 성공");
+            } else {
+                System.out.println("저장 실패");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally { // 아래는 무조건 실행되어야 하므로
+            try {
+                if (rs != null && !rs.isClosed()) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+            try {
+                if (preparedStatement != null && !preparedStatement.isClosed()) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+            try {
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
     }
 
     public Integer countWifi() {
