@@ -7,7 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CalculateDistanceRequest {
-
     private Float LAT;
     private Float LNT;
 

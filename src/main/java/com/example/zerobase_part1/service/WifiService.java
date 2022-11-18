@@ -178,7 +178,7 @@ public class WifiService {
 
             while (rs.next()) {
                 HistoryResponse historyResponseDto = HistoryResponse.builder()
-                        .id(rs.getInt("id"))
+                        .id(rs.getInt("history_id"))
                         .x(rs.getFloat("x"))
                         .y(rs.getFloat("y"))
                         .createdTime(rs.getString("created_time"))
