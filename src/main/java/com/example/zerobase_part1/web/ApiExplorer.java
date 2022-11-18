@@ -1,7 +1,7 @@
 package com.example.zerobase_part1.web;
 
 import com.example.zerobase_part1.service.WifiService;
-import com.example.zerobase_part1.web.dto.PublicWifiDto;
+import com.example.zerobase_part1.web.dto.request.PublicWifiRequest;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -12,16 +12,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.Arrays;
 
 public class ApiExplorer {
     WifiService wifiService = new WifiService();
 
-    public void wifiSave() throws IOException {
+    public Integer wifiSave() throws IOException {
+        int count = 0;
         int i = 1;
         while(true) {
             StringBuilder urlBuilder = new StringBuilder("http://openapi.seoul.go.kr:8088");
-            urlBuilder.append("/" + URLEncoder.encode("key", "UTF-8"));
+            urlBuilder.append("/" + URLEncoder.encode("57476349566865793832634a7a6263", "UTF-8"));
             urlBuilder.append("/" + URLEncoder.encode("json", "UTF-8"));
             urlBuilder.append("/" + URLEncoder.encode("TbPublicWifiInfo", "UTF-8"));
             urlBuilder.append("/" + URLEncoder.encode(String.valueOf(i), "UTF-8"));
@@ -58,8 +58,9 @@ public class ApiExplorer {
 
             JsonArray jsonArray = (JsonArray) JsonParser.parseString(jsonStr);
             for (int j = 0; j < jsonArray.size(); j++) {
+                count += 1;
                 JsonObject object = (JsonObject) jsonArray.get(j);
-                PublicWifiDto publicWifiDto = PublicWifiDto.builder()
+                PublicWifiRequest publicWifiRequest = PublicWifiRequest.builder()
                         .manageNo(object.get("X_SWIFI_MGR_NO").getAsString())
                         .borough(object.get("X_SWIFI_WRDOFC").getAsString())
                         .wifiName(object.get("X_SWIFI_MAIN_NM").getAsString())
@@ -79,13 +80,10 @@ public class ApiExplorer {
                         .build();
 
                 // 파싱한 데이터 DTO에 담아서 DB로 저장
-                wifiService.wifiSave(publicWifiDto);
+                wifiService.wifiSave(publicWifiRequest);
             }
             i += 1000;
         }
-    }
-
-    public Integer countWifi() {
-        return wifiService.countWifi();
+        return count;
     }
 }

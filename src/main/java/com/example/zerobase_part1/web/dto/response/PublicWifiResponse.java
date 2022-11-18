@@ -1,4 +1,4 @@
-package com.example.zerobase_part1.web.dto.request;
+package com.example.zerobase_part1.web.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -6,7 +6,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PublicWifiRequest {
+public class PublicWifiResponse {
+    Float distance;
     String manageNo; // 관리번호
     String borough; // 자치구
     String wifiName; // 와이파이 명
@@ -25,7 +26,8 @@ public class PublicWifiRequest {
     String workTime; // 작업 일자
 
     @Builder
-    public PublicWifiRequest(String manageNo, String borough, String wifiName, String streetAddress, String detailAddress, String floor, String typeOfInstall, String companyOfInstall, String whichService, String typeOfNet, String yearOfInstall, String inOrOut, String wifiCondition, Float LAT, Float LNT, String workTime) {
+    public PublicWifiResponse(Float distance, String manageNo, String borough, String wifiName, String streetAddress, String detailAddress, String floor, String typeOfInstall, String companyOfInstall, String whichService, String typeOfNet, String yearOfInstall, String inOrOut, String wifiCondition, Float LAT, Float LNT, String workTime) {
+        this.distance = distance;
         this.manageNo = manageNo;
         this.borough = borough;
         this.wifiName = wifiName;

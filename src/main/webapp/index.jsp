@@ -1,6 +1,3 @@
-<%@ page import="com.example.zerobase_part1.service.WifiService" %>
-<%@ page import="com.example.zerobase_part1.web.dto.HistoryDto" %>
-<%@ page import="java.time.LocalDateTime" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,15 +11,15 @@
         th, td {
             border:solid 1px #000;
         }
+        th, td {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <h1>와이파이 정보 구하기</h1>
     </tr><a href="index.jsp">홈</a> |
-    <a href="list.jsp">위치 히스토리 목록</a> |
-    <%
-        // history 테이블에 저장되어있는거 조회
-    %>
+    <a href="history.jsp">위치 히스토리 목록</a> |
     <a href="save.jsp">Open API 와이파이 정보 가져오기</a>
     <p></p>
     LAT : <span id="latitude"></span> ,
@@ -36,13 +33,13 @@
                     const longitude = pos.coords.longitude;
                     document.getElementById("latitude").innerHTML=latitude;
                     document.getElementById("longitude").innerHTML=longitude;
-                });
+                });하
                 } else {
                 alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.");
             }
         }
     </script>
-    <button>근처 WIFI 정보 보기</button>
+    <button type="button" onclick="location.href='list.jsp'">근처 WIFI 정보 보기</button>
     <p></p>
     <table>
         <thead>
@@ -64,6 +61,10 @@
                 <th>작업일자</th>
             </tr>
         </thead>
+        <tbody>
+            <tr>
+            </tr>
+        </tbody>
     </table>
 </body>
 </html>
