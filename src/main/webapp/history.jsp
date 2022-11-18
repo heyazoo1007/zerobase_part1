@@ -40,11 +40,13 @@
           WifiService wifiService = new WifiService();
           List<HistoryResponse> historyList = wifiService.getHistoryList();
           for (HistoryResponse historyResponseDto : historyList) {
+            out.write("<tr>");
             out.write("<td>" + historyResponseDto.getId() + "</td>");
             out.write("<td>" + historyResponseDto.getX() + "</td>");
             out.write("<td>" + historyResponseDto.getY() + "</td>");
             out.write("<td>" + historyResponseDto.getCreatedTime() + "</td>");
             out.write("<td>" + "<button>삭제</button>" + "</td>");
+            out.write("</tr>");
           }
         %>
       </tr>
