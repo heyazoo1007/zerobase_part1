@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PublicWifiDto {
+public class PublicWifiRequestDto {
     String manageNo; // 관리번호
     String borough; // 자치구
     String wifiName; // 와이파이 명
@@ -25,7 +25,7 @@ public class PublicWifiDto {
     String workTime; // 작업 일자
 
     @Builder
-    public PublicWifiDto(String manageNo, String borough, String wifiName, String streetAddress, String detailAddress, String floor, String typeOfInstall, String companyOfInstall, String whichService, String typeOfNet, String yearOfInstall, String inOrOut, String wifiCondition, Float LAT, Float LNT, String workTime) {
+    public PublicWifiRequestDto(String manageNo, String borough, String wifiName, String streetAddress, String detailAddress, String floor, String typeOfInstall, String companyOfInstall, String whichService, String typeOfNet, String yearOfInstall, String inOrOut, String wifiCondition, Float LAT, Float LNT, String workTime) {
         this.manageNo = manageNo;
         this.borough = borough;
         this.wifiName = wifiName;
