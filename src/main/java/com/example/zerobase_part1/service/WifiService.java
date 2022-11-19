@@ -15,8 +15,8 @@ public class WifiService {
 
     public void saveWifi(PublicWifiRequest publicWifiRequest) {
         String url = "jdbc:mariadb://localhost:3306/testdb1";
-        String dbUserId = "testuser3";
-        String dbPassword = "zerobase";
+        String dbUserId = "user";
+        String dbPassword = "password";
 
         try {
             Class.forName("org.mariadb.jdbc.Driver");
@@ -90,8 +90,8 @@ public class WifiService {
 
     public void saveXY(HistoryRequest historyRequest) {
         String url = "jdbc:mariadb://localhost:3306/testdb1";
-        String dbUserId = "testuser3";
-        String dbPassword = "zerobase";
+        String dbUserId = "user";
+        String dbPassword = "password";
 
         try {
             Class.forName("org.mariadb.jdbc.Driver");
@@ -154,8 +154,8 @@ public class WifiService {
         List<HistoryResponse> historyResponseDtoList = new ArrayList<>();
 
         String url = "jdbc:mariadb://localhost:3306/testdb1";
-        String dbUserId = "testuser3";
-        String dbPassword = "zerobase";
+        String dbUserId = "user";
+        String dbPassword = "password";
 
         try {
             Class.forName("org.mariadb.jdbc.Driver");
@@ -223,8 +223,8 @@ public class WifiService {
         int count = 0;
 
         String url = "jdbc:mariadb://localhost:3306/testdb1";
-        String dbUserId = "testuser3";
-        String dbPassword = "zerobase";
+        String dbUserId = "user";
+        String dbPassword = "password";
 
         try {
             Class.forName("org.mariadb.jdbc.Driver");
@@ -288,8 +288,8 @@ public class WifiService {
 
     public static void saveDistance(GetDistanceFromPublicWifiResponse getDistanceFromPublicWifiResponse) {
         String url = "jdbc:mariadb://localhost:3306/testdb1";
-        String dbUserId = "testuser3";
-        String dbPassword = "zerobase";
+        String dbUserId = "user";
+        String dbPassword = "password";
 
         try {
             Class.forName("org.mariadb.jdbc.Driver");
@@ -353,8 +353,8 @@ public class WifiService {
         List<PublicWifiResponse> publicWifiResponseDtoList = new ArrayList<>();
 
         String url = "jdbc:mariadb://localhost:3306/testdb1";
-        String dbUserId = "testuser3";
-        String dbPassword = "zerobase";
+        String dbUserId = "user";
+        String dbPassword = "password";
 
         try {
             Class.forName("org.mariadb.jdbc.Driver");

@@ -21,7 +21,7 @@ public class ApiExplorer {
         int i = 1;
         while(true) {
             StringBuilder urlBuilder = new StringBuilder("http://openapi.seoul.go.kr:8088");
-            urlBuilder.append("/" + URLEncoder.encode("57476349566865793832634a7a6263", "UTF-8"));
+            urlBuilder.append("/" + URLEncoder.encode("sample", "UTF-8"));
             urlBuilder.append("/" + URLEncoder.encode("json", "UTF-8"));
             urlBuilder.append("/" + URLEncoder.encode("TbPublicWifiInfo", "UTF-8"));
             urlBuilder.append("/" + URLEncoder.encode(String.valueOf(i), "UTF-8"));
