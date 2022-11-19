@@ -7,15 +7,18 @@
   <meta charset="utf-8">
   <title>제로베이스 Part1 과제</title>
   <style>
+    table {
+      width: 100%;
+    }
     th,td {
       width: 5%;
-    }
-    th, td {
-      border:solid 1px #000;
-    }
-    th, td {
+      border:solid 0.1px #000;
       text-align: center;
     }
+    th {
+      border-color: white;
+    }
+
   </style>
 </head>
 <body>
@@ -26,12 +29,12 @@
   <p></p>
   <table>
     <thead>
-      <tr>
-        <th>ID</th>
-        <th>X좌표</th>
-        <th>Y좌표</th>
-        <th>조회일자</th>
-        <th>비고</th>
+      <tr bgcolor="#3cb371">
+        <th><font color="white">ID</font></th>
+        <th><font color="white">X좌표</font></th>
+        <th><font color="white">Y좌표</font></th>
+        <th><font color="white">조회 일자</font></th>
+        <th><font color="white">비고</font></th>
       </tr>
     </thead>
     <tbody>

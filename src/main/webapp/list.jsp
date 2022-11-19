@@ -1,7 +1,9 @@
 <%@ page import="com.example.zerobase_part1.service.WifiService" %>
-<%@ page import="com.example.zerobase_part1.web.dto.request.CalculateDistanceRequest" %>
+<%@ page import="com.example.zerobase_part1.web.dto.request.GetDistanceFromPublicWifiRequest" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.zerobase_part1.web.dto.response.PublicWifiResponse" %>
+<%@ page import="com.example.zerobase_part1.web.dto.request.HistoryRequest" %>
+<%@ page import="java.time.LocalDateTime" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -10,12 +12,12 @@
     <style>
         th,td {
             width: 5%;
-        }
-        th, td {
             border:solid 1px #000;
-        }
-        th, td {
+            border:solid 1px #000;
             text-align: center;
+        }
+        th {
+            border-color: white;
         }
     </style>
 </head>
@@ -52,33 +54,42 @@
         String lnt = request.getParameter("lnt");
 
         WifiService wifiService = new WifiService();
-        CalculateDistanceRequest calculateDistanceRequest = CalculateDistanceRequest.builder()
+
+        HistoryRequest historyRequest = HistoryRequest.builder()
+                .x(Float.parseFloat(lat))
+                .y(Float.parseFloat(lnt))
+                .createdTime(LocalDateTime.now())
+                .build();
+        wifiService.saveXY(historyRequest);
+
+        GetDistanceFromPublicWifiRequest getDistanceFromPublicWifiRequest = GetDistanceFromPublicWifiRequest.builder()
                 .LAT(Float.valueOf(lat))
                 .LNT(Float.valueOf(lnt))
                 .build();
-        wifiService.calculateDistance(calculateDistanceRequest);
+
+        wifiService.getDistanceFromPublicWifi(getDistanceFromPublicWifiRequest);
     %>
     <p></p>
     <table>
         <thead>
-        <tr>
-            <th>거리(km)</th>
-            <th>관리번호</th>
-            <th>자치구</th>
-            <th>와이파이명</th>
-            <th>도로명주소</th>
-            <th>상세주소</th>
-            <th>설치위치(층)</th>
-            <th>설치유형</th>
-            <th>설치기관</th>
-            <th>서비스구분</th>
-            <th>망종류</th>
-            <th>설치년도</th>
-            <th>실내외구분</th>
-            <th>WIFI접속환경</th>
-            <th>X좌표</th>
-            <th>Y좌표</th>
-            <th>작업일자</th>
+        <tr bgcolor="#3cb371">
+            <th><font color="white">거리(km)</font></th>
+            <th><font color="white">관리번호</font></th>
+            <th><font color="white">자치구</font></th>
+            <th><font color="white">와이파이명</font></th>
+            <th><font color="white">도로명주소</font></th>
+            <th><font color="white">상세주소</font></th>
+            <th><font color="white">설치위치(층)</font></th>
+            <th><font color="white">설치유형</font></th>
+            <th><font color="white">설치기관</font></th>
+            <th><font color="white">서비스구분</font></th>
+            <th><font color="white">망종류</font></th>
+            <th><font color="white">설치년도</font></th>
+            <th><font color="white">실내외구분</font></th>
+            <th><font color="white">WIFI접속환경</font></th>
+            <th><font color="white">X좌표</font></th>
+            <th><font color="white">Y좌표</font></th>
+            <th><font color="white">작업일자</font></th>
         </tr>
         </thead>
     <tbody>

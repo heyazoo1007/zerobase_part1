@@ -5,14 +5,21 @@
     <meta charset="utf-8">
     <title>제로베이스 Part1 과제</title>
     <style>
-        th,td {
+        th, td {
             width: 5%;
-        }
-        th, td {
-            border:solid 1px #000;
-        }
-        th, td {
+            height: 10%;
+            border:solid 0.1px;
             text-align: center;
+        }
+        th {
+            border-color: white;
+        }
+        #locationbtn {
+            width: 125px;
+            height: 20px;
+            top: 15.2%;
+            left: 22.2%;
+            position: absolute;
         }
     </style>
 </head>
@@ -22,12 +29,12 @@
     <a href="history.jsp">위치 히스토리 목록</a> |
     <a href="save.jsp">Open API 와이파이 정보 가져오기</a>
     <p></p>
-    <form action="list.jsp" method="post">
+    <form action="list.jsp" method="post" >
         LAT : <input type="number" step="0.0000001" id="lat", name="lat"> ,
         LNT : <input type="number" step="0.0000001" id="lnt", name="lnt">
         <input type="submit" value="근처 WIFI 정보 보기">
     </form>
-    <button onclick="getLocation();">내 위치 가져오기</button>
+    <button id="locationbtn" type="button" onclick="getLocation();">내 위치 가져오기</button>
     <p></p>
     내 위치 : (LAT : <span id="latitude"></span>, LNT : <span id="longitude"></span>)
     <script>
@@ -47,24 +54,24 @@
     <p></p>
     <table>
         <thead>
-            <tr>
-                <th>거리(km)</th>
-                <th>관리번호</th>
-                <th>자치구</th>
-                <th>와이파이명</th>
-                <th>도로명주소</th>
-                <th>상세주소</th>
-                <th>설치위치(층)</th>
-                <th>설치유형</th>
-                <th>설치기관</th>
-                <th>서비스구분</th>
-                <th>망종류</th>
-                <th>설치년도</th>
-                <th>실내외구분</th>
-                <th>WIFI접속환경</th>
-                <th>X좌표</th>
-                <th>Y좌표</th>
-                <th>작업일자</th>
+            <tr bgcolor="#3cb371">
+                <th><font color="white">거리(km)</font></th>
+                <th><font color="white">관리번호</font></th>
+                <th><font color="white">자치구</font></th>
+                <th><font color="white">와이파이명</font></th>
+                <th><font color="white">도로명주소</font></th>
+                <th><font color="white">상세주소</font></th>
+                <th><font color="white">설치위치(층)</font></th>
+                <th><font color="white">설치유형</font></th>
+                <th><font color="white">설치기관</font></th>
+                <th><font color="white">서비스구분</font></th>
+                <th><font color="white">망종류</font></th>
+                <th><font color="white">설치년도</font></th>
+                <th><font color="white">실내외구분</font></th>
+                <th><font color="white">WIFI접속환경</font></th>
+                <th><font color="white">X좌표</font></th>
+                <th><font color="white">Y좌표</font></th>
+                <th><font color="white">작업일자</font></th>
             </tr>
         </thead>
         <tbody>
