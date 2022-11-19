@@ -1,9 +1,9 @@
 package com.example.zerobase_part1.service;
 
-import com.example.zerobase_part1.web.dto.request.CalculateDistanceRequest;
+import com.example.zerobase_part1.web.dto.request.GetDistanceFromPublicWifiRequest;
 import com.example.zerobase_part1.web.dto.request.HistoryRequest;
 import com.example.zerobase_part1.web.dto.request.PublicWifiRequest;
-import com.example.zerobase_part1.web.dto.response.CalculateDistanceResponse;
+import com.example.zerobase_part1.web.dto.response.GetDistanceFromPublicWifiResponse;
 import com.example.zerobase_part1.web.dto.response.HistoryResponse;
 import com.example.zerobase_part1.web.dto.response.PublicWifiResponse;
 
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class WifiService {
 
-    public void wifiSave(PublicWifiRequest publicWifiRequest) {
+    public void saveWifi(PublicWifiRequest publicWifiRequest) {
         String url = "jdbc:mariadb://localhost:3306/testdb1";
         String dbUserId = "testuser3";
         String dbPassword = "zerobase";
@@ -170,7 +170,7 @@ public class WifiService {
         try {
             connection = DriverManager.getConnection(url, dbUserId, dbPassword);
 
-            String sql = "select * from history";
+            String sql = "select * from history order by history_id desc";
 
             preparedStatement = connection.prepareStatement(sql);
 
@@ -217,9 +217,10 @@ public class WifiService {
     }
 
     // 입력된 x, y 값으로 모든 튜플과의 거리 계산해서 테이블에 저장하기
-    public void calculateDistance(CalculateDistanceRequest calculateDistanceRequest) {
-        Float targetLAT = calculateDistanceRequest.getLAT();
-        Float targetLNT = calculateDistanceRequest.getLNT();
+    public void getDistanceFromPublicWifi(GetDistanceFromPublicWifiRequest getDistanceFromPublicWifiRequest) {
+        Float targetLAT = getDistanceFromPublicWifiRequest.getLAT();
+        Float targetLNT = getDistanceFromPublicWifiRequest.getLNT();
+        int count = 0;
 
         String url = "jdbc:mariadb://localhost:3306/testdb1";
         String dbUserId = "testuser3";
@@ -243,17 +244,18 @@ public class WifiService {
             preparedStatement = connection.prepareStatement(sql);
 
             rs = preparedStatement.executeQuery();
-            while (rs.next()) {
+            while (rs.next() && count < 16300) {
                 float lat = rs.getFloat("lat");
                 float lnt = rs.getFloat("lnt");
-                double distance = getDistance(targetLAT, targetLNT, lat, lnt);
+                double distance = calculateDistance(targetLAT, targetLNT, lat, lnt);
 
-                CalculateDistanceResponse calculateDistanceResponse = CalculateDistanceResponse.builder()
+                GetDistanceFromPublicWifiResponse getDistanceFromPublicWifiResponse = GetDistanceFromPublicWifiResponse.builder()
                         .distance(distance)
                         .manageNo(rs.getString("manage_no"))
                         .build();
 
-                saveDistance(calculateDistanceResponse);
+                saveDistance(getDistanceFromPublicWifiResponse);
+                count++;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -284,7 +286,7 @@ public class WifiService {
         }
     }
 
-    public static void saveDistance(CalculateDistanceResponse calculateDistanceResponse) {
+    public static void saveDistance(GetDistanceFromPublicWifiResponse getDistanceFromPublicWifiResponse) {
         String url = "jdbc:mariadb://localhost:3306/testdb1";
         String dbUserId = "testuser3";
         String dbPassword = "zerobase";
@@ -306,8 +308,8 @@ public class WifiService {
                     "values (?, ?); ";
 
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setDouble(1, calculateDistanceResponse.getDistance());
-            preparedStatement.setString(2, calculateDistanceResponse.getManageNo());
+            preparedStatement.setDouble(1, getDistanceFromPublicWifiResponse.getDistance());
+            preparedStatement.setString(2, getDistanceFromPublicWifiResponse.getManageNo());
 
             int affected = preparedStatement.executeUpdate();
 
@@ -425,7 +427,7 @@ public class WifiService {
         return publicWifiResponseDtoList;
     }
 
-    private static double getDistance(Float x1, Float y1, Float x2, Float y2) {
+    private static double calculateDistance(Float x1, Float y1, Float x2, Float y2) {
         double dy = Math.pow(Math.abs(y2 - y1), 2);
         double dx = Math.pow(Math.abs(x2 - x1), 2);
 

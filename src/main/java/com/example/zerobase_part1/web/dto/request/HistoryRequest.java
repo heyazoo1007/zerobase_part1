@@ -1,5 +1,6 @@
 package com.example.zerobase_part1.web.dto.request;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ public class HistoryRequest {
     private Float y;
     private LocalDateTime createdTime;
 
+    @Builder
     public HistoryRequest(Float x, Float y, LocalDateTime createdTime) {
         this.x = x;
         this.y = y;

@@ -80,7 +80,7 @@ public class ApiExplorer {
                         .build();
 
                 // 파싱한 데이터 DTO에 담아서 DB로 저장
-                wifiService.wifiSave(publicWifiRequest);
+                wifiService.saveWifi(publicWifiRequest);
             }
             i += 1000;
         }

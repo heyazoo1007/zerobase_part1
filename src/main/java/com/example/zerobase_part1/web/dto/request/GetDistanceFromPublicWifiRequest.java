@@ -6,12 +6,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CalculateDistanceRequest {
+public class GetDistanceFromPublicWifiRequest {
     private Float LAT;
     private Float LNT;
 
     @Builder
-    public CalculateDistanceRequest(Float LAT, Float LNT) {
+    public GetDistanceFromPublicWifiRequest(Float LAT, Float LNT) {
         this.LAT = LAT;
         this.LNT = LNT;
     }

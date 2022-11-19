@@ -6,12 +6,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CalculateDistanceResponse {
+public class GetDistanceFromPublicWifiResponse {
     private Double distance;
     private String manageNo;
 
     @Builder
-    public CalculateDistanceResponse(Double distance, String manageNo) {
+    public GetDistanceFromPublicWifiResponse(Double distance, String manageNo) {
         this.distance = distance;
         this.manageNo = manageNo;
     }
