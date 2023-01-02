@@ -15,18 +15,18 @@ DataBase : MariaDb, DBeaver
 <br>
 
 ### ⌨️ Process 
-* 서울시 공공와이파이 회원가입, open api 인증키 발급
+* 서울시 공공와이파이 회원가입, open api 인증키 발급 
 * IntelliJ에 lombok, gson, okhttp3, tomcat 설치
 * mariadb jdbc 연결
-* 공공 와이파이 API 요청 및 응답 데이터 수신 완료
-* db에 객체 저장하는 로직(wifiSave) 구현
-* 데이터 파싱 후 DTO 객체 생성 및 저장 구현
-* 홈 화면 구현하기(텍스트, 버튼, 테이블)
-* 현재 위치 JavaScript로 가져오기
-* 현재 위치 히스토리 테이블에 저장
-* 저장된 히스토리 값 리스트 조회 로직 구현
-* (현재 위치 ~ 각 wifi 위치) 거리 구하고 거리 테이블에 저장 로직 구현
-* 거리 테이블, wifi 테이블 조인 후 asc해서 20개 리스트 반환하는 로직 구현
+* 공공 와이파이 API 요청 및 응답 데이터 수신 완료 - [상세보기 - WIKI 이동](https://github.com/heyazoo1007/zerobase_part1_mission1/blob/main/src/main/java/com/example/zerobase_part1/web/ApiExplorer.java)
+* db에 객체 저장하는 로직(wifiSave) 구현 - [상세보기 - WIKI 이동](https://github.com/heyazoo1007/zerobase_part1_mission1/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(DB%EC%97%90-%EA%B0%9D%EC%B2%B4-%EC%A0%80%EC%9E%A5))
+* 데이터 파싱 후 DTO 객체 생성 및 저장 구현 - [상세보기 - WIKI 이동](https://github.com/heyazoo1007/zerobase_part1_mission1/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(DB%EC%97%90-%EA%B0%9D%EC%B2%B4-%EC%A0%80%EC%9E%A5))
+* 현재 위치 히스토리 테이블에 저장 - [상세보기 - WIKI 이동](https://github.com/heyazoo1007/zerobase_part1_mission1/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(DB%EC%97%90-%EA%B0%9D%EC%B2%B4-%EC%A0%80%EC%9E%A5))
+* 저장된 히스토리 값 리스트 조회 로직 구현 - [상세보기 - WIKI 이동](https://github.com/heyazoo1007/zerobase_part1_mission1/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(DB%EC%97%90-%EA%B0%9D%EC%B2%B4-%EC%A0%80%EC%9E%A5))
+* (현재 위치 ~ 각 wifi 위치) 거리 구하고 거리 테이블에 저장 로직 구현 - [상세보기 - WIKI 이동](https://github.com/heyazoo1007/zerobase_part1_mission1/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(DB%EC%97%90-%EA%B0%9D%EC%B2%B4-%EC%A0%80%EC%9E%A5))
+* 거리 테이블, wifi 테이블 조인 후 asc해서 20개 리스트 반환하는 로직 구현 - [상세보기 - WIKI 이동](https://github.com/heyazoo1007/zerobase_part1_mission1/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(DB%EC%97%90-%EA%B0%9D%EC%B2%B4-%EC%A0%80%EC%9E%A5))
+* 홈 화면 구현하기(텍스트, 버튼, 테이블) - [상세보기 - WIKI 이동](https://github.com/heyazoo1007/zerobase_part1_mission1/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(%ED%99%94%EB%A9%B4-%EA%B5%AC%ED%98%84))
+* 현재 위치 JavaScript로 가져오기 - [상세보기 - WIKI 이동](https://github.com/heyazoo1007/zerobase_part1_mission1/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(%ED%99%94%EB%A9%B4-%EA%B5%AC%ED%98%84))
 
 ### ❕ 진행하면서 배운 것들
 * Spring 없이 jdbc 연결하는 방법 
