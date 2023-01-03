@@ -33,8 +33,9 @@ DataBase : MariaDb, DBeaver
   * 현재 위치 JavaScript로 가져오기 
   
 ### ❕ 진행하면서 배운 것들
-* Spring 없이 jdbc 연결하는 방법 
-* JPA 없이 CRUD 로직 구현하는 방법 
+* Spring Web 없이 어플리케이션 화면에 띄우는 방법 
+* JDBC 사용해 직접 어플리케이션과 데이터베이스 연결하는 방법 
+* JPA 없이 CRUD 로직 구현하는 방법
 * JSP 사용하는 방법 
 
 ### 🤯 진행 중 어려웠던 점 
